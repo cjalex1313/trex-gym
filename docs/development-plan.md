@@ -2,6 +2,8 @@
 
 > **Approach:** Agile & incremental. Each phase delivers a working, testable vertical slice. Every phase ends with something you can demo, use, or get feedback on — not a pile of "foundational" code with no UI.
 
+> **Language requirement (Web + Mobile):** All user-facing content in the frontends must be in **Romanian** (`ro-RO`) because the app is intended for a Romanian gym. This applies to labels, buttons, validation/error/success messages, navigation, placeholders, empty states, and status text.
+
 ---
 
 ## Phase 0 — Local Dev Environment & Docker (Days 1–2)
@@ -74,6 +76,7 @@ You can start the API via Docker, log in as admin, create/list/update/delete cli
 ### Deliverables
 
 - [ ] **Project setup**
+  - Configure frontend localization baseline for Romanian (`ro-RO`) and keep Romanian as default UI language
   - Install PrimeVue component library + PrimeIcons
   - Configure Pinia stores structure
   - Set up Axios/Fetch API client with JWT interceptor (auto-attach token, handle 401 → redirect to login)
@@ -91,9 +94,10 @@ You can start the API via Docker, log in as admin, create/list/update/delete cli
 - [ ] **Basic error handling**
   - Toast notifications for success/error on all API calls
   - Loading skeletons on data-fetching screens
+  - Ensure all UI copy shown to users is in Romanian (including form validation and error states)
 
 ### Definition of Done
-Owner logs in via the web browser, sees clients in a table, adds a new client, edits one, suspends one — all persisted in MongoDB via the API.
+Owner logs in via the web browser, sees clients in a table, adds a new client, edits one, suspends one — all persisted in MongoDB via the API, with all visible UI text in Romanian.
 
 ---
 
@@ -191,6 +195,8 @@ Scan a QR code from a test page → API validates → entry logged → visible i
   - Change PIN (calls a new `PUT /api/client/pin` endpoint)
   - Notification preferences (placeholder for now)
 - [ ] **Navigation** — bottom tab bar (QR, Subscription, History, Settings)
+- [ ] **Romanian UI copy**
+  - All user-facing mobile text (screen titles, labels, buttons, messages, status badges, empty/error states) is in Romanian
 
 ### API Additions
 
@@ -198,7 +204,7 @@ Scan a QR code from a test page → API validates → entry logged → visible i
 - [ ] `POST /api/auth/client/forgot-pin` — sends new PIN to client email
 
 ### Definition of Done
-Client logs in on the Expo app, sees a live QR code that refreshes, views their subscription info, and can change their PIN.
+Client logs in on the Expo app, sees a live QR code that refreshes, views their subscription info, and can change their PIN, with all visible mobile UI text in Romanian.
 
 ---
 
