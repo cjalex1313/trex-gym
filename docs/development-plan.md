@@ -10,19 +10,19 @@
 
 ### Deliverables
 
-- [ ] `docker-compose.yml` at the repo root with services:
+- [x] `docker-compose.yml` at the repo root with services:
   - **mongodb** — Official MongoDB 7 image, data persisted to a named volume, healthcheck configured
   - **mongo-express** — Web-based Mongo admin UI (accessible at `localhost:8081`) for inspecting data during dev
   - **trexgym-api** — NestJS API with hot-reload (volume-mount `./trexgym-api/src`, use `start:dev`)
   - **trexgym-web** — Vue dev server with HMR (volume-mount `./trexgym-web/src`, forward Vite port)
   - **mailhog** - For mocking email service
-- [ ] `Dockerfile.api` (dev) and `Dockerfile.web` (dev) — multi-stage Dockerfiles (dev target with hot-reload, prod target with optimized build)
-- [ ] `.env.example` at repo root with all required env vars documented:
+- [x] `Dockerfile.api` (dev) and `Dockerfile.web` (dev) — multi-stage Dockerfiles (dev target with hot-reload, prod target with optimized build)
+- [x] `.env.example` at repo root with all required env vars documented:
   - `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRY`, `RESEND_API_KEY`, `API_PORT`, `WEB_PORT`
-- [ ] `Makefile` or root `package.json` scripts for common tasks:
+- [x] `Makefile` or root `package.json` scripts for common tasks:
   - `make up` / `make down` / `make logs` / `make seed`
-- [ ] Seed script (`trexgym-api/src/seeds/`) that creates a default admin account and a few sample clients
-- [ ] Update root `README.md` with quick-start instructions
+- [x] Seed script (`trexgym-api/src/seeds/`) that creates a default admin account and a few sample clients
+- [x] Update root `README.md` with quick-start instructions
 
 ### Why first?
 Docker eliminates "works on my machine." Every subsequent phase is developed and tested inside this environment, ensuring consistency from day one.

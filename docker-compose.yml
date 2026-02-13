@@ -1,0 +1,79 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: trexgym-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: trexgym
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: trexgym-mongo-express
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_BASICAUTH: "false"
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/trexgym
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: trexgym-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  trexgym-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+      target: dev
+    container_name: trexgym-api
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      PORT: ${API_PORT:-3000}
+      MONGO_URI: ${MONGO_URI:-mongodb://mongodb:27017/trexgym}
+      JWT_SECRET: ${JWT_SECRET:-dev-secret}
+      JWT_EXPIRY: ${JWT_EXPIRY:-24h}
+      RESEND_API_KEY: ${RESEND_API_KEY:-dev-resend-key}
+    ports:
+      - "${API_PORT:-3000}:${API_PORT:-3000}"
+    volumes:
+      - ./trexgym-api/src:/app/src
+
+  trexgym-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      target: dev
+    container_name: trexgym-web
+    restart: unless-stopped
+    depends_on:
+      trexgym-api:
+        condition: service_started
+    environment:
+      WEB_PORT: ${WEB_PORT:-5173}
+    ports:
+      - "${WEB_PORT:-5173}:${WEB_PORT:-5173}"
+    volumes:
+      - ./trexgym-web/src:/app/src
+
+volumes:
+  mongodb_data:
