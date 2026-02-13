@@ -74,7 +74,7 @@ You can start the API via Docker, log in as admin, create/list/update/delete cli
 ### Deliverables
 
 - [ ] **Project setup**
-  - Install PrimeVue (or Naive UI) component library + PrimeIcons
+  - Install PrimeVue component library + PrimeIcons
   - Configure Pinia stores structure
   - Set up Axios/Fetch API client with JWT interceptor (auto-attach token, handle 401 → redirect to login)
   - Configure Vue Router with auth guard (redirect to `/login` if no token)
@@ -172,6 +172,7 @@ Scan a QR code from a test page → API validates → entry logged → visible i
 ### Deliverables
 
 - [ ] **Auth flow**
+  - Install React Native Paper (Material Design component library) for consistent, production-ready mobile UI components
   - Login screen — email + 6-digit PIN input
   - Secure token storage (Expo SecureStore)
   - Auto-login on app launch if token still valid
