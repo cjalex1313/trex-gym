@@ -1,3 +1,5 @@
+name: trexgym
+
 services:
   mongodb:
     image: mongo:7
@@ -9,6 +11,7 @@ services:
       MONGO_INITDB_DATABASE: trexgym
     volumes:
       - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
@@ -38,6 +41,7 @@ services:
       - "8025:8025"
 
   trexgym-api:
+    image: trexgym/api:dev
     build:
       context: .
       dockerfile: Dockerfile.api
@@ -62,6 +66,7 @@ services:
       - ./trexgym-api/src:/app/src
 
   trexgym-web:
+    image: trexgym/web:dev
     build:
       context: .
       dockerfile: Dockerfile.web
@@ -80,3 +85,4 @@ services:
 
 volumes:
   mongodb_data:
+  mongodb_config:
