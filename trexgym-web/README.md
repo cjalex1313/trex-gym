@@ -1,73 +1,56 @@
 # trexgym-web
 
-This template should help get you started developing with Vue 3 in Vite.
+Dashboard web pentru TRexGYM (Vue 3 + Vite + PrimeVue), implementat pentru Phase 2 din planul de dezvoltare.
 
-## Recommended IDE Setup
+## Funcționalități Phase 2
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Autentificare admin (`/login`) cu persistență token în `localStorage`
+- Client API cu interceptor JWT și redirecționare automată la `401`
+- Rute protejate cu guard (`/dashboard`, `/clients`, `/settings`)
+- Management clienți:
+  - listă paginată + căutare
+  - detalii client
+  - adăugare client (cu afișare PIN generat)
+  - editare client
+  - suspendare client
+- Toast-uri pentru succes/eroare + skeleton loading states
+- Copy UI în limba română (`ro-RO`)
 
-## Recommended Browser Setup
+## Configurare
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+1. Instalează dependențele:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+2. Configurează URL-ul API (opțional):
+
+```sh
+VITE_API_BASE_URL=http://localhost:3000/api
+```
+
+3. Rulează aplicația:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Scripturi utile
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
 npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
 npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+npm run test:e2e:chromium
+npm run test:e2e:firefox
+npm run test:e2e:ci
 npm run lint
 ```
+
+## Note pentru E2E
+
+- `test:e2e:chromium` este varianta recomandată pentru rulare locală rapidă.
+- `test:e2e:firefox` validează compatibilitatea cross-browser.
+- `test:e2e:ci` rulează headless (config CI) și este potrivit pentru pipeline.
+- Scripturile E2E rulează cu `--workers=1` pentru a evita flakiness cauzat de rate limiting pe endpoint-urile de autentificare.

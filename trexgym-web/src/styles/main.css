@@ -1,0 +1,136 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.layout-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.layout-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-email {
+  font-size: 0.875rem;
+}
+
+.is-active {
+  font-weight: 600;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-form,
+.page-stack,
+.form-grid,
+.skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 380px;
+}
+
+.action-row,
+.inline-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.detail-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-error {
+  font-size: 0.8125rem;
+}
+
+.pin-value {
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .layout-actions {
+    gap: 0.5rem;
+  }
+
+  .admin-email {
+    display: none;
+  }
+}

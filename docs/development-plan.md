@@ -37,29 +37,29 @@ Docker eliminates "works on my machine." Every subsequent phase is developed and
 
 ### Deliverables
 
-- [ ] **MongoDB connection** — `@nestjs/mongoose` integration, connection config from env vars
-- [ ] **Admin module**
+- [x] **MongoDB connection** — `@nestjs/mongoose` integration, connection config from env vars
+- [x] **Admin module**
   - `admins` Mongoose schema/model
   - Seed script creates default admin on first run
-- [ ] **Auth module**
+- [x] **Auth module**
   - `POST /api/auth/admin/login` — email + password → JWT (24h expiry)
   - `POST /api/auth/client/login` — email + PIN → JWT (30d expiry)
   - `POST /api/auth/refresh` — refresh token
   - JWT strategy (`@nestjs/passport`, `@nestjs/jwt`)
   - `JwtAuthGuard` (global) + `RolesGuard` (admin vs. client)
   - Rate limiting on login endpoints (5 req/min/IP via `@nestjs/throttler`)
-- [ ] **Clients module**
+- [x] **Clients module**
   - `clients` Mongoose schema with indexes (email unique, qrToken unique/sparse, status)
   - `GET /api/clients` — paginated, searchable list (admin)
   - `GET /api/clients/:id` — detail (admin)
   - `POST /api/clients` — create client, generate 6-digit PIN, hash with bcrypt (admin)
   - `PUT /api/clients/:id` — update (admin)
   - `DELETE /api/clients/:id` — soft-delete / suspend (admin)
-- [ ] **Validation & security**
+- [x] **Validation & security**
   - `class-validator` + `ValidationPipe` globally
   - Helmet middleware
   - CORS configured for local dev origins
-- [ ] **Tests**
+- [x] **Tests**
   - Unit tests for auth service (JWT generation, password/PIN verification)
   - Unit tests for clients service (CRUD operations)
   - E2E tests for auth flow and client endpoints
@@ -75,23 +75,23 @@ You can start the API via Docker, log in as admin, create/list/update/delete cli
 
 ### Deliverables
 
-- [ ] **Project setup**
+- [x] **Project setup**
   - Configure frontend localization baseline for Romanian (`ro-RO`) and keep Romanian as default UI language
   - Install PrimeVue component library + PrimeIcons
   - Configure Pinia stores structure
   - Set up Axios/Fetch API client with JWT interceptor (auto-attach token, handle 401 → redirect to login)
   - Configure Vue Router with auth guard (redirect to `/login` if no token)
-- [ ] **Auth store & screens**
+- [x] **Auth store & screens**
   - `useAuthStore` — login, logout, token storage (localStorage), user state
   - Login page — admin email + password form with validation and error feedback
-- [ ] **Client management screens**
+- [x] **Client management screens**
   - **Client List** — PrimeVue DataTable with search, sort, pagination, status badges, quick actions (edit, suspend)
   - **Client Detail** — profile info panel (subscription & payment sections are placeholder/empty for now)
   - **Add/Edit Client** — form with validation (firstName, lastName, email, phone); on create, shows generated PIN confirmation
-- [ ] **Layout & navigation**
+- [x] **Layout & navigation**
   - Sidebar or top-nav layout with: Dashboard (placeholder), Clients, Settings (placeholder)
   - Responsive basics (works on tablet+ for now)
-- [ ] **Basic error handling**
+- [x] **Basic error handling**
   - Toast notifications for success/error on all API calls
   - Loading skeletons on data-fetching screens
   - Ensure all UI copy shown to users is in Romanian (including form validation and error states)
