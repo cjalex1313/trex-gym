@@ -107,13 +107,13 @@ Owner logs in via the web browser, sees clients in a table, adds a new client, e
 
 ### API Deliverables
 
-- [ ] **Subscriptions module**
+- [x] **Subscriptions module**
   - `subscriptions` Mongoose schema with indexes (clientId + status, endDate)
   - `GET /api/clients/:id/subscriptions` — list subscription history
   - `POST /api/clients/:id/subscriptions` — create subscription (plan, dates, price, currency)
   - `PUT /api/subscriptions/:id` — update (extend, cancel)
   - Auto-set subscription status `active` and client status `active` on creation
-- [ ] **Payments module**
+- [x] **Payments module**
   - `payments` Mongoose schema with indexes (subscriptionId, clientId + paymentDate)
   - `GET /api/subscriptions/:id/payments` — payments for a subscription
   - `POST /api/subscriptions/:id/payments` — log payment (amount, date, method, notes)
@@ -121,14 +121,14 @@ Owner logs in via the web browser, sees clients in a table, adds a new client, e
   - `DELETE /api/payments/:id` — delete erroneous payment
   - `GET /api/clients/:id/payments` — full payment history for a client
   - `GET /api/payments/outstanding` — subscriptions with unpaid balances
-- [ ] **Tests** for subscription and payment CRUD + business rules
+- [x] **Tests** for subscription and payment CRUD + business rules
 
 ### Web Dashboard Deliverables
 
-- [ ] **Client Detail** — now shows subscription history and payment history (real data)
-- [ ] **Subscription Form** — plan type selector, date pickers, price input; attached to a client
-- [ ] **Log Payment** — form with amount, date, method, notes; linked to a subscription
-- [ ] **Outstanding Payments** — dedicated view listing subscriptions with remaining balances, quick-log action
+- [x] **Client Detail** — now shows subscription history and payment history (real data)
+- [x] **Subscription Form** — plan type selector, date pickers, price input; attached to a client
+- [x] **Log Payment** — form with amount, date, method, notes; linked to a subscription
+- [x] **Outstanding Payments** — dedicated view listing subscriptions with remaining balances, quick-log action
 
 ### Definition of Done
 Owner creates a subscription for a client, logs partial/full payments, sees outstanding balances, and views payment history — all end-to-end.

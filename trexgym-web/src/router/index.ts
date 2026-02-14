@@ -7,6 +7,7 @@ import SettingsView from '@/views/SettingsView.vue'
 import ClientsListView from '@/views/clients/ClientsListView.vue'
 import ClientDetailView from '@/views/clients/ClientDetailView.vue'
 import ClientFormView from '@/views/clients/ClientFormView.vue'
+import OutstandingPaymentsView from '@/views/payments/OutstandingPaymentsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,6 +56,11 @@ const router = createRouter({
           path: 'settings',
           name: 'settings',
           component: SettingsView,
+        },
+        {
+          path: 'payments/outstanding',
+          name: 'payments-outstanding',
+          component: OutstandingPaymentsView,
         },
       ],
     },

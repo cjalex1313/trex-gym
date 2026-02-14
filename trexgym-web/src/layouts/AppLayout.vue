@@ -23,6 +23,12 @@ const menuItems = [
     routeName: 'clients-list',
   },
   {
+    label: 'Plăți restante',
+    icon: 'pi pi-wallet',
+    command: () => router.push({ name: 'payments-outstanding' }),
+    routeName: 'payments-outstanding',
+  },
+  {
     label: 'Setări',
     icon: 'pi pi-cog',
     command: () => router.push({ name: 'settings' }),
